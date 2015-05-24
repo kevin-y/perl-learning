@@ -1,0 +1,32 @@
+#!/bin/bash
+prog=tomcat
+JAVA_HOME=${JAVA_HOME}
+export JAVA_HOME
+CATALANA_HOME=${CATALANA_HOME}
+export CATALINA_HOME
+
+case "$1" in
+start)
+    echo "Starting Tomcat..."
+    $CATALANA_HOME/bin/startup.sh
+    ;;
+
+stop)
+    echo "Stopping Tomcat..."
+    $CATALANA_HOME/bin/shutdown.sh
+    ;;
+
+restart)
+    echo "Stopping Tomcat..."
+    $CATALANA_HOME/bin/shutdown.sh
+    sleep 2
+    echo
+    echo "Starting Tomcat..."
+    $CATALANA_HOME/bin/startup.sh
+    ;;
+
+*)
+    echo "Usage: $prog {start|stop|restart}"
+    ;;
+esac
+exit 0
